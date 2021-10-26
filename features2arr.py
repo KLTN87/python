@@ -17,7 +17,6 @@ def txt2Arr(path, type):
                 for num in temp1:
                     temp2.insert(len(temp2),float(num))
                 arr1.insert(len(arr1),temp2)
-    # arr1 = numpy.array(arr1)
     return arr1;
 
 
@@ -25,29 +24,20 @@ def txt2Arr(path, type):
 
 
 
+# import numpy as np 
 
-
-# path0 = 'training.txt'
-# path1 = 'testing.txt'
+# path0 = 'training-dave.txt'
+# path1 = 'testing-dave.txt'
 
 
 # labelTrain = txt2Arr(path0,"label")
 # vectorTrain = txt2Arr(path0,"vector")
-# labelTest = txt2Arr(path1,"label")
-# vectorTest = txt2Arr(path1,"vector")
+# # labelTest = txt2Arr(path1,"label")
+# # vectorTest = txt2Arr(path1,"vector")
 
+# vectorTrain = np.array(vectorTrain)
 
-
-
-
-# labelTrain = numpy.array(labelTrain)
-# vectorTrain = numpy.array(vectorTrain)
-# labelTest = numpy.array(labelTest)
-# vectorTest = numpy.array(vectorTest)
-
-
-
-# print("LABEL TRAIN", labelTrain)
-# print("VECTOR TRAIN", vectorTrain[0])
-# print("LABEL TEST", labelTest)
-# print("VECTOR TEST", vectorTest[0])
+# # print("LABEL TRAIN", labelTrain)
+# print("VECTOR TRAIN", vectorTrain)
+# # print("LABEL TEST", labelTest)
+# # print("VECTOR TEST", vectorTest[0])
