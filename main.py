@@ -10,8 +10,8 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from features2arr import txt2Arr
 
 # 1.
-path0 = '0-training.txt'
-path1 = '0-testing.txt'
+path0 = 'training-dave.txt'
+path1 = 'testing-dave'
 
 labelTrain = txt2Arr(path0,"label")
 vectorTrain = txt2Arr(path0,"vector")
