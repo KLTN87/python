@@ -10,8 +10,8 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from features2arr import txt2Arr
 
 # 1.
-path0 = '0-training.txt'
-path1 = '0-testing.txt'
+path0 = 'training-dave.txt'
+path1 = 'testing-dave.txt'
 
 labelTrain = txt2Arr(path0,"label")
 vectorTrain = txt2Arr(path0,"vector")
@@ -20,7 +20,7 @@ labelTest = txt2Arr(path1,"label")
 vectorTest = txt2Arr(path1,"vector")
 
 
-nb_classes = 1 #we have these many digits in our training
+nb_classes = 62 #we have these many digits in our training
 
 # 1. Prepare data 
 trainX = np.array(vectorTrain)
@@ -69,14 +69,14 @@ print("Train complete");
 #
 #Test the model
 #
-print("Testing on test data")
-(loss, accuracy) = model.evaluate(
-    testX, 
-    testY,
-    batch_size = 1, 
-    verbose = 1)
+# print("Testing on test data")
+# (loss, accuracy) = model.evaluate(
+#     testX, 
+#     testY,
+#     batch_size = 1, 
+#     verbose = 1)
 
-# Print the model's accuracy
-print("Accuracy="+ str(accuracy))
+# # Print the model's accuracy
+# print("Accuracy="+ str(accuracy))
 
-print(trainX)
+# print(trainX)
