@@ -10,8 +10,8 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from features2arr import txt2Arr
 
 # 1.
-path0 = 'training-dave.txt'
-path1 = 'testing-dave'
+path0 = '0-training.txt'
+path1 = '0-testing.txt'
 
 labelTrain = txt2Arr(path0,"label")
 vectorTrain = txt2Arr(path0,"vector")
@@ -33,7 +33,10 @@ print('Prepare data completed')
 
 # 2. Build model 
 model = Sequential()
-model.add(Dense(1, input_shape=((None, 2560))))
+model.add(Dense(16, input_dim=((2560)), activation='sigmoid'))
+model.add(Dense(8, activation='sigmoid'))
+model.add(Dense(1, activation='softmax'))
+model.summary()
 # model.add(Dense(128))
 # model.add(Dense(1, input_shape=((None, 2560))))
 # model.add(Activation('linear'))
@@ -57,11 +60,11 @@ print('Created an model!')
 # 3. gradient descent optimizer and loss function 
 sgd = optimizers.SGD(lr=0.05)
 #model.compile(loss=losses.binary_crossentropy, optimizer=sgd)
-model.compile(loss='categorical_crossentropy',
-                optimizer='adam',
+model.compile(loss='mse',
+                optimizer=sgd,
                 metrics=['accuracy'])
 # 4. Train the model 
-model.fit(trainX, trainY,validation_data=(testX,testY) ,epochs=20, batch_size=1, verbose=2) 
+model.fit(trainX, trainY ,epochs=20, batch_size=1, verbose=2) 
 print("Train complete");
 #
 #Test the model
@@ -75,3 +78,5 @@ print("Testing on test data")
 
 # Print the model's accuracy
 print("Accuracy="+ str(accuracy))
+
+print(trainX)
