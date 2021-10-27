@@ -15,8 +15,8 @@ from tensorflow.keras.utils import to_categorical
 
 
 # 1.
-path0 = 'training-dave.txt'
-path1 = 'testing-dave.txt'
+path0 = '1-training-dave.txt'
+path1 = '1-testing-dave.txt'
 
 labelTrain = txt2Arr(path0,"label")
 vectorTrain = txt2Arr(path0,"vector")
@@ -25,7 +25,7 @@ labelTest = txt2Arr(path1,"label")
 vectorTest = txt2Arr(path1,"vector")
 
 
-nb_classes = 62 #we have these many digits in our training
+nb_classes = 10 #we have these many digits in our training
 input_shape = (None, 2560)
 
 # 1. Prepare data 
@@ -50,7 +50,7 @@ print('Prepare data completed')
 # 2. Build model 
 model = Sequential()
 model.add(Flatten())
-model.add(Dense(128))
+model.add(Dense(256))
 model.add(Activation(activation = "softmax"))
 model.add(Dense(nb_classes,name="outputlayer")) 
 model.add(Activation("softmax"))
@@ -74,7 +74,7 @@ print("Compilation complete");
 model.fit(
     trainX, 
     trainY_one_hot, 
-    batch_size = 10, 
+    batch_size = 128, 
     epochs = 20,
 	verbose = 1)
 print("Train complete");
@@ -105,3 +105,7 @@ print("Accuracy="+ str(accuracy))
 
 # print(trainY)
 
+predict_x = model.predict(testX)[96] 
+classes_x = np.argmax(predict_x, axis=-1)
+print(classes_x)
+print(testY[96])
