@@ -1,5 +1,3 @@
-# import numpy
-
 def txt2Arr(path, type):
     file1 = open(path, 'r')
     Lines = file1.readlines()
@@ -20,29 +18,3 @@ def txt2Arr(path, type):
     return arr1;
 
 
-
-
-
-
-# import numpy as np 
-
-# # path0 = 'training-dave.txt'
-# path1 = '1-testing-dave.txt'
-
-
-# labelTrain = txt2Arr(path0,"label")
-# vectorTrain = txt2Arr(path0,"vector")
-# # labelTest = txt2Arr(path1,"label")
-# vectorTest = txt2Arr(path1,"vector")
-
-# # vectorTrain = np.array(vectorTrain)
-
-# # # print("LABEL TRAIN", labelTrain)
-# # print("VECTOR TRAIN", vectorTrain)
-# # # print("LABEL TEST", labelTest)
-# print("VECTOR TEST", vectorTest[0])
-
-# testX = numpy.array(vectorTest)
-
-
-# print("VECTOR TEST", testX[0])
