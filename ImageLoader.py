@@ -11,10 +11,10 @@ import os.path
 def get_im(path):
     # Load as grayscale
     img = cv2.imread(path, 0)
-    return img;
+#     return img;
     # Reduce size
-    #resized = cv2.resize(img, (128, 96))
-    #return resized
+    resized = cv2.resize(img, (28, 28))
+    return resized
 #
 #Load images and labels. Returns a tuple of image data,label
 #

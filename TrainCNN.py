@@ -1,13 +1,6 @@
 import numpy as np
 np.random.seed(2016)
 
-import os
-import glob
-import cv2
-import math
-import pickle
-import datetime
-from tensorflow.keras.optimizers import SGD
 from tensorflow import keras
 import tensorflow as tf
 from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
@@ -20,10 +13,7 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
 from keras.models import model_from_json
-from sklearn.metrics import log_loss
-import time
 from ImageLoader import load_images,ReShapeData
-# from FreezeKerasToTF import freeze_session
 from keras import backend as K
 
 #
@@ -109,7 +99,7 @@ print("Train begin");
 # Train the model 
 
 total_epochs=20
-start = time.time()
+
 model.fit(
     train_data1, 
     train_target1, 
