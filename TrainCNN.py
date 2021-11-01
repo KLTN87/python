@@ -1,18 +1,12 @@
 import numpy as np
 np.random.seed(2016)
-
-from tensorflow import keras
 import tensorflow as tf
 from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
 import numpy as np
-
-
-
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
-from keras.models import model_from_json
 from ImageLoader import load_images,ReShapeData
 from keras import backend as K
 
@@ -54,7 +48,7 @@ model = Sequential()
 # Lost= 0.06838732957839966 Accuracy= 0.9810000061988831
 
 
-model.add(Convolution2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(Convolution2D(32, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
@@ -105,7 +99,7 @@ model.fit(
     train_target1, 
     batch_size = 128, 
     epochs = total_epochs,
-	  verbose = 1)
+	verbose = 1)
 print("Train complete");
 #
 #Test the model
