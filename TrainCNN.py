@@ -13,15 +13,15 @@ from keras import backend as K
 #
 #The following variables should be set to the folder where MNIST images have been extracted 
 #
-mnist_train_path_full="C:\\Users\\Admin\\Downloads\\mnist_png\\training\\*\\*.png"
-mnist_test_path="C:\\Users\\Admin\\Downloads\\mnist_png\\testing\\*\\*.png"
-nb_classes = 10 #we have these many digits in our training
+train_path_full="C:\\Users\\Admin\\Downloads\\Compressed\\vaibs2\\training\\*\\*.png"
+test_path="C:\\Users\\Admin\\Downloads\\Compressed\\vaibs2\\testing\\*\\*.png"
+nb_classes = 36 #we have these many digits in our training
 
 #
 #Load training images
 #
 print("Loading training images")
-(train_data, train_target)=load_images(mnist_train_path_full)
+(train_data, train_target)=load_images(train_path_full)
 (train_data1,train_target1)=ReShapeData(train_data,train_target,nb_classes)
 print('Shape:', train_data1.shape)
 print(train_data1.shape[0], ' train images were loaded')
@@ -29,7 +29,7 @@ print(train_data1.shape[0], ' train images were loaded')
 #Load test images
 #
 print("Loading testing images")
-(test_data, test_target)=load_images(mnist_test_path)
+(test_data, test_target)=load_images(test_path)
 (test_data1,test_target1)=ReShapeData(test_data,test_target,nb_classes)
 print('Shape:', test_data1.shape)
 print(test_data1.shape[0], ' test images were loaded')

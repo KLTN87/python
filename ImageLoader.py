@@ -3,6 +3,7 @@ import glob
 import cv2
 from keras.utils import np_utils
 import os.path
+from tensorflow.keras.utils import to_categorical
 
 #
 #Load an image using the specified path. opencv needed
@@ -11,10 +12,11 @@ import os.path
 def get_im(path):
     # Load as grayscale
     img = cv2.imread(path, 0)
-#     return img;
+    return img;
     # Reduce size
-    resized = cv2.resize(img, (28, 28))
-    return resized
+#     resized = cv2.resize(img, (28, 28))
+#     resized = cv2.resize(img, (28,28), interpolation= cv2.INTER_LINEAR)
+#     return resized
 #
 #Load images and labels. Returns a tuple of image data,label
 #
@@ -51,5 +53,6 @@ def ReShapeData(data,target,numclasses):
         data_out = data_out[:, :, :, np.newaxis]
         data_out = data_out.astype('float32')
         data_out /= 255
-        target_out = np_utils.to_categorical(target_out, numclasses)
+        # target_out = np_utils.to_categorical(target_out, numclasses)
+        target_out = to_categorical(target_out) 
         return data_out,target_out
