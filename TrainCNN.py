@@ -13,9 +13,9 @@ from keras import backend as K
 #
 #The following variables should be set to the folder where MNIST images have been extracted 
 #
-train_path_full="C:\\Users\\Admin\\Downloads\\Compressed\\vaibs2\\training\\*\\*.png"
-test_path="C:\\Users\\Admin\\Downloads\\Compressed\\vaibs2\\testing\\*\\*.png"
-nb_classes = 36 #we have these many digits in our training
+train_path_full="C:\\Users\\Admin\\Downloads\\mnist_png\\training\\*\\*.png"
+test_path="C:\\Users\\Admin\\Downloads\\mnist_png\\testing\\*\\*.png"
+nb_classes = 10 #we have these many digits in our training
 
 #
 #Load training images
@@ -38,48 +38,45 @@ print("Load complete")
 # Create a sequential model
 #
 model = Sequential()
-
-# model.add(Flatten())
-# model.add(Dense(128, activation='relu'))
-# model.add(Dropout(0.2))
-# model.add(Dense(nb_classes,name="outputlayer")) 
-# model.add(Activation("softmax"))
-
-# Lost= 0.06838732957839966 Accuracy= 0.9810000061988831
-
-
-model.add(Convolution2D(32, (3, 3), activation='relu'))
-model.add(MaxPooling2D((2, 2)))
+# Add the first convolution layer
+model.add(Convolution2D(
+    name="conv1",
+    filters = 20,
+    kernel_size = (5, 5),
+    padding = "same",
+    input_shape = (28, 28, 1)))
+# Add a ReLU activation function
+model.add(Activation(
+    activation = "relu"))
+# Add a pooling layer
+model.add(MaxPooling2D(
+    name="maxpool1",
+    pool_size = (2, 2),
+    strides =  (2, 2)))
+# Add the second convolution layer
+model.add(Convolution2D(
+    name="conv2",
+    filters = 50,
+    kernel_size = (5, 5),
+    padding = "same"))
+# Add a ReLU activation function
+model.add(Activation(
+    activation = "relu"))
+# Add a second pooling layer
+model.add(MaxPooling2D(
+    name="maxpool2",
+    pool_size = (2, 2),
+    strides = (2, 2)))
+# Flatten the network
 model.add(Flatten())
-model.add(Dense(128, activation='relu'))
-model.add(Dense(nb_classes, activation='softmax'))
-
-# Lost= 0.05874831601977348 Accuracy= 0.9868000149726868
-
-
-# #convolutional layer with rectified linear unit activation
-# model.add(Convolution2D(32, kernel_size=(3, 3),
-#                  activation='relu',
-#                  input_shape=(28, 28, 1)))
-# #32 convolution filters used each of size 3x3
-# #again
-# model.add(Convolution2D(64, (3, 3), activation='relu'))
-# #64 convolution filters used each of size 3x3
-# #choose the best features via pooling
-# model.add(MaxPooling2D((2, 2)))
-# #randomly turn neurons on and off to improve convergence
-# model.add(Dropout(0.25))
-# #flatten since too many dimensions, we only want a classification output
-# model.add(Flatten())
-# #fully connected to get all relevant data
-# model.add(Dense(128, activation='relu'))
-# #one more dropout for convergence' sake :) 
-# model.add(Dropout(0.5))
-# #output a softmax to squash the matrix into output probabilities
-# model.add(Dense(nb_classes, activation='softmax'))
-
-# # Lost= 0.0335056334733963 Accuracy= 0.9926000237464905
-
+# Add a fully-connected hidden layer
+model.add(Dense(500))
+# Add a ReLU activation function
+model.add(Activation(activation = "relu"))
+# Add a fully-connected output layer - the output layer nodes should match the count of image classes
+model.add(Dense(nb_classes,name="outputlayer")) 
+# Add a softmax activation function
+model.add(Activation("softmax"))
 
 
 
