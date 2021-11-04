@@ -1,7 +1,6 @@
 import numpy as np
 np.random.seed(2016)
 import tensorflow as tf
-from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
@@ -112,5 +111,4 @@ print("Testing on test data")
 print("Lost= "+ str(loss) + " Accuracy= "+ str(accuracy))
 model.save('saveCNN.h5')
 model.summary()
-
 
